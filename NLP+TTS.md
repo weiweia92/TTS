@@ -6,7 +6,7 @@
 
 I know the state of the system now at time t.What will be the state at time t+n?
 
-![](../pic/1610971387152-de86a973-2182-45da-a5a0-ec8954457038.png)
+![](/pic/1610971387152-de86a973-2182-45da-a5a0-ec8954457038.png)
 
 ### RNN 
 
@@ -14,7 +14,7 @@ I know the state of the system now at time t.What will be the state at time t+n?
 
 **Equal sized input and output sequence**
 
-![](../pic/1610971462272-d9291c65-0c83-4791-a0ae-7ad8cd402463.png)
+![](/pic/1610971462272-d9291c65-0c83-4791-a0ae-7ad8cd402463.png)
 
 There's **a problem** with back propagation through time at every time step we need to perform back propagation so deep layers have significantly larger computation costs they take longer and activations need to be stored at every time step so the amount of storage you need. 
 
@@ -31,8 +31,6 @@ Teacher Forcing 是一种用于序列生成任务的训练技巧，与Autoregres
 - Autoregressive 模式下，在 timesteps $t$ decoder模块的输入是 timesteps $t-1$ 的输出 $y_{t-1}$ 。这时候我们称 $y_{t-1}$ 为当前预测步的 context;   
 
 - Teacher-Forcing 模式下，在 timestep $t$ decoder模块的输入是 Ground-truth 语句中位置的 $y^*_{t-1}$ 单词。这时候我们称 $y^*_{t-1}$ 为当前预测步的 context；
-
-![](../pic/v2-9dfffde9deac9f51aaf5fee127e905a8_r.jpeg)
 
 Teacher-Forcing 技术之所以作为一种有用的训练技巧，主要是因为：
 
@@ -68,7 +66,22 @@ Application: Language Translation, Text Summarization
 
 Input sequence length=output sequence length
 
-![](../pic/1610973608784-ec30251a-d800-4f1d-9b0d-da895134bfc8.png)
+![](pic/1610973608784-ec30251a-d800-4f1d-9b0d-da895134bfc8.png)
+
+
+### LSTM
+
+**Isn't Vanish/Exploding gradient a problem in DNN too?**
+
+Much worse in RNN than DNN
+
+**How deal with this in RNN? lstm**
+
+LSTM是特殊的RNN,主要为了解决长序列训练过程中梯度消失和梯度爆炸问题。简单来说，相比普通的RNN，LSTM能够在更长的序列中有更好的表现。
+
+左图为普通RNN，右图为LSTM
+
+![](/Users/leexuewei/TTS/Tacotron2/pic/Screen Shot 2022-03-09 at 7.42.56 PM.png)
 
 ### Sequence-to-Sequence
 
@@ -223,7 +236,7 @@ Now we can generate the context vector by doing an element-wise multiplication o
 
 The context vector we produced will then be concatenated with the previous decoder output. It is then fed into the decoder RNN cell to produce a new hidden state and the process repeats itself from step 2. The final output for the time step is obtained by passing the new hidden state through a Linear layer, which acts as a classifier to give the probability scores of the next predicted word.
 
-![](../pic/1611918239564-93d8c2f1-cbdd-4a4c-9f9f-6d932f9cc539.jpeg)
+![](pic/1611918239564-93d8c2f1-cbdd-4a4c-9f9f-6d932f9cc539.jpeg)
 
 ### Luong Attention
 
@@ -351,7 +364,7 @@ $$\alpha_i = \alpha_{i-1}\cdot p_i +[0;\alpha_{i-1,:-1}\cdot(1-p_{i,:-1})] \tag{
 
 以上attention的更直观的如图1所示，一目了然。
 
-![](../pic/Screen Shot 2022-03-08 at 12.13.00 PM.png)
+![](pic/Screen Shot 2022-03-08 at 12.13.00 PM.png)
 
 **Sharpening**
 
@@ -371,7 +384,7 @@ LSTM slower than RNN ,input data needs to be passed sequentially or serially one
 
 Transformer neural network architecture was introduced the network employs an encoder decoder architecture. The difference from RNN is the input sequence can be passed in parallel.
 
-![](../pic/1611041442592-09bab4be-a60b-4bfb-adea-1c17b0d135ec.png)
+![](pic/1611041442592-09bab4be-a60b-4bfb-adea-1c17b0d135ec.png)
 word embedding are generated one time&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;there is no concept of time step for the input.
 
 step at a time   &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;we pass in all the words of the sentence simultaneously 
@@ -382,7 +395,7 @@ step at a time   &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&em
 
 **Encoder block**
 
-![](../pic/1611050103148-e92038f6-ad4f-41d5-b095-d1d797d53589.png)
+![](pic/1611050103148-e92038f6-ad4f-41d5-b095-d1d797d53589.png)
 
 **1.Input embedding--vectors and matrices**
 
